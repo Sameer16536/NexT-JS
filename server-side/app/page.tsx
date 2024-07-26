@@ -1,9 +1,16 @@
 import axios from "axios";
-
+import client from '@/db'
 const getUserdetails = async()=>{
   // await new Promise((r)=>{setTimeout(r,5000)})
-  const response = await axios.get("http://localhost:3000/api/user")
-    return response.data
+  // const response = await axios.get("http://localhost:3000/api/user")
+  //   return response.data
+
+  const user = await client.user2.findFirst({});
+    return {
+      email:user?.username,
+      name:user?.username,
+
+    }
 }
 
 //async component
